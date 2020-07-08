@@ -34,6 +34,17 @@ public class BookDTO {
         this.status = status;
     }
 
+    public BookDTO(String image, String title, float price, int availableAmount, String description, boolean status) {
+        this.image = image;
+        this.title = title;
+        this.price = price;
+        this.availableAmount = availableAmount;
+        this.description = description;
+        this.status = status;
+    }
+    
+    
+
     public String getDescription() {
         return description;
     }

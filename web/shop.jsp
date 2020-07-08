@@ -49,7 +49,7 @@
                                 <div class="filter-range-wrap">
                                     <div class="range-slider">
                                         <div class="price-input">
-                                            <input type="text" id="minamount" readonly="" name="txtPriceFrom" value="$${requestScope.PRICE_FROM}">
+                                            <input type="text" id="minamount" readonly="" name="txtPriceFrom">
                                             <input type="text" id="maxamount" readonly="" name="txtPriceTo">
                                         </div>
                                     </div>
@@ -81,12 +81,12 @@
                             <div class="row">
                                 <div class="col-lg-7 col-md-7">
                                     <div class="select-option">
-<!--                                        <select class="sorting">
-                                            <option value="">Default Sorting</option>
-                                        </select>
-                                        <select class="p-show">
-                                            <option value="">Show:</option>
-                                        </select>-->
+                                        <!--                                        <select class="sorting">
+                                                                                    <option value="">Default Sorting</option>
+                                                                                </select>
+                                                                                <select class="p-show">
+                                                                                    <option value="">Show:</option>
+                                                                                </select>-->
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-md-5 text-right">
@@ -104,8 +104,7 @@
                                 <c:forEach var="dto" items="${requestScope.LIST_BOOK}" varStatus="counter">
                                     <div class="col-lg-4 col-sm-6">
                                         <div class="product-item">
-                                            <div class="pi-pic">
-                                                <a href="shop.jsp"></a>
+                                            <div class="pi-pic">                                  
                                                 <img src="${dto.image}" alt="">
                                                 <div class="sale pp-sale">Sale</div>
                                                 <div class="icon">
@@ -132,12 +131,21 @@
                                                     <span>$ ${dto.price+15}</span>
                                                 </div>
                                             </div>
+                                            <div class="pi-text">
+                                                <c:if test="${sessionScope.USER!=null && not empty sessionScope.USER}">
+                                                    <c:if test="${sessionScope.USER.role.roleID eq 0}">
+                                                        <form action="MainController" method="post">
+                                                            <input type="hidden" name="bookID" value="${dto.bookID}"/>
+                                                            <button name="btnAction" value="Delete_Book" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </c:if>
+                                                </c:if>
+                                            </div>
                                         </div>
                                     </div>
                                 </c:forEach>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -153,6 +161,7 @@
         <script src="js/jquery.slicknav.js"></script>
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/main.js"></script>
+
         <%@include file="footer.jsp" %>
     </body>
 

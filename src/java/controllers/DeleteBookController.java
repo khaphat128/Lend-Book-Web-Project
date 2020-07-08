@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import daos.BookDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,67 +16,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Administrator
  */
-public class MainController extends HttpServlet {
-
-    private final String LOGIN = "LoginController";
-    private final String REGISTER_PAGE = "register.jsp";
-    private final String LOGIN_PAGE = "login.jsp";
-    private final String REGISTER = "RegisterController";
-    private final String HOME = "ShowBookController";
-    private final String DETAIL_BOOK = "ShowABookDetailController";
-    private final String LOGOUT = "LogoutController";
-    private final String INSERT_BOOK_PAGE = "insertBook.jsp";
-    private final String INSERT_BOOK = "InsertBookController";
-    private final String DELETE_BOOK = "DeleteBookController";
+public class DeleteBookController extends HttpServlet {
 
     private final String ERROR = "invalid.jsp";
+    private final String SUCCESS = "ShowBookController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String action = request.getParameter("btnAction");
-            switch (action) {
-                case "Login":
-                    url = LOGIN;
-                    break;
-                case "Register Page":
-                    url = REGISTER_PAGE;
-                    break;
-                case "Register":
-                    url = REGISTER;
-                    break;
-                case "Login Page":
-                    url = LOGIN_PAGE;
-                    break;
-                case "Search":
-                    url = HOME;
-                    break;
-                case "Home":
-                    url = HOME;
-                    break;
-                case "DetailBook":
-                    url = DETAIL_BOOK;
-                    break;
-                case "Logout":
-                    url = LOGOUT;
-                    break;
-                case "Insert Book Page":
-                    url = INSERT_BOOK_PAGE;
-                    break;
-                case "Insert_Book_Controller":
-                    url = INSERT_BOOK;
-                    break;
-                case "Delete_Book":
-                    url = DELETE_BOOK;
-                    break;
-
-                default:
-                    url = LOGIN;
-            }
+            int bookID = Integer.parseInt(request.getParameter("bookID"));
+            BookDAO bookDAO = new BookDAO();
+            bookDAO.deleteBook(bookID);
+            url = SUCCESS;
         } catch (Exception e) {
-            e.toString();
+            log("error at deleteController " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

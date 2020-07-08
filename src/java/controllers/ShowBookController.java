@@ -55,7 +55,7 @@ public class ShowBookController extends HttpServlet {
             if (list != null) {
                 request.setAttribute("SEARCH_VALUE", search);
                 request.setAttribute("LIST_BOOK", list);
-                request.setAttribute("SEARCH_VALUE", search);
+                request.setAttribute("SEARCH_VALUE", search); //chổ này dư 1 thz????
            
             }
         } catch (Exception e) {

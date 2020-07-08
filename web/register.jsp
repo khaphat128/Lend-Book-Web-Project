@@ -31,7 +31,7 @@
                     <div class="col-lg-6 offset-lg-3">
                         <div class="register-form">
                             <h2>Registration</h2>
-                            <form action="MainController" method="post">
+                            <form action="MainController" method="post"> 
                                 <div class="group-input">
                                     <label for="userID">User ID*</label>
                                     <input type="text" id="userID" name="txtUserID" value=""/>

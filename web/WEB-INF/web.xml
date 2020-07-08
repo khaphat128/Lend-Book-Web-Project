@@ -24,6 +24,14 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>controllers.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertBookController</servlet-name>
+        <servlet-class>controllers.InsertBookController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteBookController</servlet-name>
+        <servlet-class>controllers.DeleteBookController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertBookController</servlet-name>
+        <url-pattern>/InsertBookController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBookController</servlet-name>
+        <url-pattern>/DeleteBookController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

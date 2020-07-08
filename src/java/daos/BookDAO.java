@@ -121,7 +121,40 @@ public class BookDAO {
             closeConnection();
         }
         return bookDTO;
-
     }
 
+    public void insertABook(BookDTO bookDTO) throws SQLException {
+        conn = MyConnection.getConnection();
+        try {
+            if (conn != null) {
+                String sql = "INSERT INTO tblBooks(image, title, price, description, totalAmount, availableAmount, status) VALUES(?,?,?,?,?,?,?)";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, bookDTO.getImage());
+                ps.setString(2, bookDTO.getTitle());
+                ps.setFloat(3, bookDTO.getPrice());
+                ps.setString(4, bookDTO.getDescription());
+                ps.setInt(5, bookDTO.getTotalAmount());
+                ps.setInt(6, bookDTO.getAvailableAmount());
+                ps.setBoolean(7, true);
+                ps.executeUpdate();
+            }
+        } finally {
+            closeConnection();
+        }
+    }
+    
+    public void deleteBook(int bookID) throws SQLException{
+        conn=MyConnection.getConnection();
+        try {
+            if(conn!=null){
+                String sql="DELETE tblBooks where bookID=?";
+                ps=conn.prepareStatement(sql);
+                ps.setInt(1, bookID);
+                ps.executeUpdate();
+            }
+        }finally{
+            closeConnection();
+        }
+    }
+    
 }
