@@ -27,8 +27,14 @@ public class MainController extends HttpServlet {
     private final String INSERT_BOOK_PAGE = "insertBook.jsp";
     private final String INSERT_BOOK = "InsertBookController";
     private final String DELETE_BOOK = "DeleteBookController";
-
+    private final String UPDATE_BOOK = "UpdateBookController";
+    private final String UPDATE_BOOK_PAGE = "updateBook.jsp";
     private final String ERROR = "invalid.jsp";
+
+    private final String ADD_TO_CART = "AddToCartController";
+    private final String UPDATE_CART = "UpdateCartController";
+    private final String DELETE_CART = "DeleteCartController";
+    private final String CHECKOUTCONTROLLER = "CheckOutController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -70,7 +76,24 @@ public class MainController extends HttpServlet {
                 case "Delete_Book":
                     url = DELETE_BOOK;
                     break;
-
+                case "Update_Book_Page":
+                    url = UPDATE_BOOK_PAGE;
+                    break;
+                case "Update Book":
+                    url = UPDATE_BOOK;
+                    break;
+                case "Add To Cart":
+                    url = ADD_TO_CART;
+                    break;
+                case "Update Cart":
+                    url = UPDATE_CART;
+                    break;
+                case "Delete Cart":
+                    url = DELETE_CART;
+                    break;
+                case "Checkout":
+                    url = CHECKOUTCONTROLLER;
+                    break;
                 default:
                     url = LOGIN;
             }

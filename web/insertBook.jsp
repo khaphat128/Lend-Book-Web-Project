@@ -19,11 +19,11 @@
         <form action="MainController" method="post" class="container" style="width: 50%">
             <div class="form-group">
                 Image link:<input type="file" name="txtImage" value="" class="form-control"/><br>
-
+                
             </div>
             <div class="form-group">
                 Title:<input type="text" name="txtTitle" value=""class="form-control"/><br>
-
+                
             </div>
             <div class="form-group">
                 Price:<input type="number" step="0.5" name="txtPrice" min="1" max="100" value="" class="form-control"/><br>
@@ -34,13 +34,12 @@
 
             </div>
             <div class="form-group">
-                Available Amount:<input type="number" name="txtAvailableAmount" min="1" max="100" value="" class="form-control"/><br>
+                Available Amount:<input type="number" name="txtTotalAmount" min="1" max="100" value="" class="form-control"/><br>
 
             </div>
             <div class="form-group">
                 <button type="submit" name="btnAction" value="Insert_Book_Controller" class="form-control btn btn-success">Insert</button>
             </div>
-
         </form>
     </body>
 </html>

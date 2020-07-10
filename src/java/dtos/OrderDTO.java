@@ -15,9 +15,14 @@ public class OrderDTO {
     private int orderID;
     private float totalPrice;
     private Date date;
+    private Date dateReturn;
     private UserDTO user;
 
     public OrderDTO() {
+    }
+
+    public OrderDTO(int orderID) {
+        this.orderID = orderID;
     }
 
     public OrderDTO(int orderID, float totalPrice, Date date, UserDTO user) {
@@ -26,6 +31,15 @@ public class OrderDTO {
         this.date = date;
         this.user = user;
     }
+
+    public OrderDTO(int orderID, float totalPrice, Date date, Date dateReturn, UserDTO user) {
+        this.orderID = orderID;
+        this.totalPrice = totalPrice;
+        this.date = date;
+        this.dateReturn = dateReturn;
+        this.user = user;
+    }
+    
 
     public int getOrderID() {
         return orderID;
@@ -58,5 +72,14 @@ public class OrderDTO {
     public void setUser(UserDTO user) {
         this.user = user;
     }
+
+    public Date getDateReturn() {
+        return dateReturn;
+    }
+
+    public void setDateReturn(Date dateReturn) {
+        this.dateReturn = dateReturn;
+    }
+    
     
 }

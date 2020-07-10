@@ -17,65 +17,64 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Administrator
  */
-public class InsertBookController extends HttpServlet {
+public class UpdateBookController extends HttpServlet {
 
     private final String SUCCESS = "ShowBookController";
-    private final String UNSUCCESS = "insertBook.jsp";
+    private final String ERROR = "updateBook.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = SUCCESS;
+        String url = ERROR;
         try {
+            boolean check = true;
+            int bookID = Integer.parseInt(request.getParameter("bookID"));
             String image = request.getParameter("txtImage");
             if (image == null || image.isEmpty()) {
-                url = UNSUCCESS;
-                request.setAttribute("IMAGE_ERROR", "Image is required");
-            } else {
-//                int index = image.indexOf("image\\");
-//                image = image.substring(index);
-                image = "image\\" + image;
+                request.setAttribute("ERROR", "Image is required!");
+                check = false;
             }
-            //     image="image/"+image;
+            image = "image\\" + image;
 
-            String title = request.getParameter("txtTitle");
-            if (title.isEmpty() || title.length() == 0) {
-                url = UNSUCCESS;
-                request.setAttribute("TITLE_ERROR", "Title is required");
+            String title = "";
+            title = request.getParameter("txtTitle");
+            if (title == null || title.isEmpty()) {
+                request.setAttribute("ERROR", "Title is required");
+                check = false;
             }
 
             float price = 0;
             price = Float.parseFloat(request.getParameter("txtPrice"));
             if (price <= 0) {
-                request.setAttribute("PRICE_ERROR", "Are you know what is price?");
-                url = UNSUCCESS;
+                request.setAttribute("ERROR", "Price is required");
+                check = false;
+
             }
 
-            String description = "";
-            description = request.getParameter("txtDescription");
-            if (description.isEmpty() || description == null) {
-                request.setAttribute("DESCRIPTION_ERROR", "Description is required");
-                url = UNSUCCESS;
+            String description = request.getParameter("txtDescription");
+            if (description.length() == 0 || description.isEmpty()) {
+                request.setAttribute("ERROR", "Description is required");
+                check = false;
+
             }
 
-            int totalAmount = 0;
-            totalAmount = Integer.parseInt(request.getParameter("txtTotalAmount"));
+            int totalAmount = Integer.parseInt(request.getParameter("txtTotalAmount"));
             if (totalAmount <= 0) {
-                request.setAttribute("TOTAL_AMOUNT_ERROR", "Total Amount is required");
-                url = UNSUCCESS;
+                request.setAttribute("ERROR", "Total Amount must > 0");
+                check = false;
             }
-            int availableMount = totalAmount;
-            if (url != UNSUCCESS) {
-                BookDTO bookDTO = new BookDTO(image, title, price, totalAmount, availableMount, description);
+            if (check) {
+                BookDTO newBook = new BookDTO(bookID, image, title, price, totalAmount, totalAmount, description);
                 BookDAO bookDAO = new BookDAO();
-                bookDAO.insertABook(bookDTO);
+                bookDAO.updateBook(newBook);
+                url = SUCCESS;
             }
-
         } catch (Exception e) {
-            log("Error at InsertBookController " + e.toString());
+            log("Error at UpdateController " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

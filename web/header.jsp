@@ -20,20 +20,21 @@
                         <c:param name="btnAction" value="Home"></c:param>
                     </c:url>
                     <li><a href="${home}">Home</a></li>
-                        <c:if test="${sessionScope.USER==null || empty sessionScope.USER}">
-
-                    </c:if>
                     <c:if test="${sessionScope.USER!=null && not empty sessionScope.USER}">
                         <c:if test="${sessionScope.USER.role.roleID eq 0}">
                             <li><a href="#">Manager</a>
                                 <ul class="dropdown">
                                     <li><a href="#">Manager Book</a></li>
+                                        <%-- insert a book --%>
                                     <li>
                                         <c:url var="insert" value="MainController">
                                             <c:param name="btnAction" value="Insert Book Page"></c:param>
                                         </c:url>
                                         <a href="${insert}">Insert A Book</a>
                                     </li>
+                                    <%-- update a book --%>
+
+
                                     <li><a href="#">Manager User</a></li>
                                 </ul>
                             </li>

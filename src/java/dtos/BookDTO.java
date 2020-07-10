@@ -19,6 +19,7 @@ public class BookDTO {
     private int availableAmount;
     private String description;
     private boolean status;
+   
 
     public BookDTO() {
     }
@@ -34,13 +35,23 @@ public class BookDTO {
         this.status = status;
     }
 
-    public BookDTO(String image, String title, float price, int availableAmount, String description, boolean status) {
+    public BookDTO(String image, String title, float price, int totalAmount, int availableMount, String description) {
         this.image = image;
         this.title = title;
         this.price = price;
+        this.totalAmount = totalAmount;
+        this.availableAmount = availableMount;
+        this.description = description;
+    }
+
+    public BookDTO(int bookID, String image, String title, float price, int totalAmount, int availableAmount, String description) {
+        this.bookID = bookID;
+        this.image = image;
+        this.title = title;
+        this.price = price;
+        this.totalAmount = totalAmount;
         this.availableAmount = availableAmount;
         this.description = description;
-        this.status = status;
     }
     
     
@@ -52,8 +63,6 @@ public class BookDTO {
     public void setDescription(String description) {
         this.description = description;
     }
-
-   
 
     public int getBookID() {
         return bookID;
@@ -87,7 +96,6 @@ public class BookDTO {
         this.image = image;
     }
 
-    
     public int getTotalAmount() {
         return totalAmount;
     }
@@ -111,6 +119,5 @@ public class BookDTO {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
 
 }

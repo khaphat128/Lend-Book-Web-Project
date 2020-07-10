@@ -80,13 +80,16 @@
                                         <h4>$ ${requestScope.BOOK_DETAIL.price} <span>$ ${requestScope.BOOK_DETAIL.price+15}</span></h4>
                                     </div>
 
-
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
+                                    <form method="POST" action="MainController">
+                                        <div class="quantity">
+                                            <input type="hidden" name="bookID" value="${requestScope.BOOK_DETAIL.bookID}"/>
+                                            <div class="pro-qty">
+                                                <input type="text" value="1" name="quantity">
+                                            </div>
+                                            <button type="submit" value="Add To Cart" name="btnAction" class="primary-btn pd-cart">Add To Cart</button>
                                         </div>
-                                        <a href="#" class="primary-btn pd-cart">Add To Cart</a>
-                                    </div>
+                                    </form>
+
 
                                     <div class="pd-share">
                                         <div class="p-code">Sku : 00012</div>

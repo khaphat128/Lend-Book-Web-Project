@@ -16,18 +16,16 @@ public class OrderDetailDTO {
     private BookDTO book;
     private int amount;
     private float totalPrice;
-    private boolean statusReturn;
 
     public OrderDetailDTO() {
     }
 
-    public OrderDetailDTO(int id, OrderDTO order, BookDTO book, int amount, float totalPrice, boolean statusReturn) {
+    public OrderDetailDTO(int id, OrderDTO order, BookDTO book, int amount, float totalPrice) {
         this.id = id;
         this.order = order;
         this.book = book;
         this.amount = amount;
         this.totalPrice = totalPrice;
-        this.statusReturn = statusReturn;
     }
 
     public int getId() {
@@ -69,13 +67,6 @@ public class OrderDetailDTO {
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
     }
-
-    public boolean isStatusReturn() {
-        return statusReturn;
-    }
-
-    public void setStatusReturn(boolean statusReturn) {
-        this.statusReturn = statusReturn;
-    }
+    
 
 }

@@ -141,6 +141,22 @@
                                                     </c:if>
                                                 </c:if>
                                             </div>
+                                            <div class="pi-text">
+                                                <c:if test="${sessionScope.USER!=null && not empty sessionScope.USER}">
+                                                    <c:if test="${sessionScope.USER.role.roleID eq 0}">
+                                                        <form action="MainController" method="post">
+                                                            <input type="hidden" name="bookID" value="${dto.bookID}"/>
+                                                            <input type="hidden" name="image" value="${dto.image}"/>
+                                                            <input type="hidden" name="title" value="${dto.title}"/>
+                                                            <input type="hidden" name="price" value="${dto.price}"/>
+                                                            <input type="hidden" name="description" value="${dto.description}"/>
+                                                            <input type="hidden" name="totalAmount" value="${dto.totalAmount}"/>
+                                                            <input type="hidden" name="availableAmount" value="${dto.availableAmount}"/>
+                                                            <button name="btnAction" value="Update_Book_Page" class="btn btn-danger">Update</button>
+                                                        </form>
+                                                    </c:if>
+                                                </c:if>
+                                            </div>
                                         </div>
                                     </div>
                                 </c:forEach>
